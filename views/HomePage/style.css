@@ -1,0 +1,80 @@
+.headerLogo{
+    width: 220px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.wrapper{
+    max-width: 50%;
+    margin: 20px auto;
+}
+
+.wrapper .searchBar{
+    position: relative;
+    background: #fff;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+}
+
+.searchBar input{
+    height: 55px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 0 60px 0 20px;
+    font-size: 18px;
+}
+
+.searchBar .searchIcon{
+    height: 55px;
+    width: 55px;
+    line-height: 55px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    font-size: 20px;
+    color: #644bff;
+    cursor: pointer;
+}
+
+.searchBar.active input{
+    border-radius: 5px 5px 0 0;
+  }
+  
+
+.searchBar .autocompleteBox{
+    /* padding: 10px 8px; */
+    max-height: 280px;
+    overflow-y: auto;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchBar.active .autocompleteBox{
+    padding: 10px 8px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+.autocompleteBox li{
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    cursor: default;
+    border-radius: 3px;
+}
+
+.searchBar.active .autocompleteBox li{
+    display: block;
+  }
+
+.autocompleteBox li:hover{
+    background: bisque;
+}
