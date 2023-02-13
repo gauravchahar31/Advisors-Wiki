@@ -12,12 +12,77 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9b59b6;">
         <img class="headerLogo" src="/assets/logo.png">
-        <button class="navbar-toggler" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span>Hi User</span>
+        <button class="navbar-toggler btn btn-primary" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span>Logout</span>
         </button>
     </nav>
     <br>
-    <button class="btn btn-primary" style="margin-left: 10px;">Create New Advisory</button>
+    <button type="button" class="btn btn-primary" style="margin-left: 10px;" data-toggle="modal" data-target="#exampleModalCenter">Create New Advisory</button>
+    <br><br>
+    
+    <div class="advisoryBoard card-deck">
+    </div>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Create New Advisory</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="newAdvisory" onsubmit="createNewAdvisory(this, event)">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Advisory Name</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Example : MoneyGrow" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Advisory Description</label>
+                            <input type="text" class="form-control" name="description" id="description" placeholder="Example : Best Market Tips" required>
+                        </div>
+                    </div>
+                    <small id="responseBox"></small>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Edit Modal -->
+    <div class="modal fade editModal" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Advisory</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="editAdvisory" onsubmit="editAdvisory(this, event)">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Advisory Name</label>
+                            <input type="text" class="form-control" name="name" id="editName" placeholder="Example : MoneyGrow" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Advisory Description</label>
+                            <input type="text" class="form-control" name="description" id="editDescription" placeholder="Example : Best Market Tips" required>
+                            <input type="hidden" id="advisoryId" value="">
+                        </div>
+                    </div>
+                    <small id="responseBox"></small>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <script src="/UserPage/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>

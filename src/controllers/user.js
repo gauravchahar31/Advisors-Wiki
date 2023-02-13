@@ -7,7 +7,6 @@ const rootDir = path.dirname(require.main.filename);
 exports.createNewUser = async (req, res) => {
     try{
         const userAccount = await Users.findOne({email : req.body.email})
-        console.log(userAccount);
         if(userAccount){
             res.status(200).send('User Already Exists!');
         }
@@ -28,7 +27,7 @@ exports.authenticateUser = async (req, res) => {
         const userAccount = await Users.findOne({email : req.body.email})
         if(userAccount){
             if(await passwordEncryption.verifyPass(req.body.password, userAccount.password)){
-                res.cookie('user',userAccount.jwt, { maxAge: 900000, httpOnly: true });
+                res.cookie('user',userAccount.jwt);
                 res.status(200).send('Account Verified!, Moving to Admin Page..');
             }else{
                 res.status(401).send('Incorrect Password!');
@@ -63,6 +62,7 @@ exports.adminPage = async (req, res) => {
 exports.logout = async (req, res) => {
     try{
         res.clearCookie('user');
+        res.status(200).send(true);
     }
     catch(err){
         console.log(err);

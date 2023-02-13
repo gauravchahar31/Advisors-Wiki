@@ -16,8 +16,10 @@ app.use(express.static('views'));
 
 const homeRoutes = require('./src/routes/home');
 const userRoutes = require('./src/routes/user');
+const advisoryRoutes = require('./src/routes/advisory');
 
 app.use('/user', userRoutes);
+app.use('/advisory', advisoryRoutes);
 app.use(homeRoutes);
 
 
